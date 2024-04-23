@@ -28,6 +28,21 @@ namespace _413FinalCameronHammond.Controllers
             return View(entertainers); // Pass the list of entertainers to the view
         }
 
+        // Artist Details Functionality
+        public IActionResult ArtistDetails(int entertainerId)
+        {
+            var entertainer = _repo.Entertainers.FirstOrDefault(e => e.EntertainerID == entertainerId);
+            if (entertainer == null)
+            {
+                return NotFound();
+            }
+            return View(entertainer);
+        }
+
+
+
+
+        // Add Artist Functionality
 
         [HttpGet]
         public IActionResult AddArtist()
@@ -46,10 +61,40 @@ namespace _413FinalCameronHammond.Controllers
             return RedirectToAction("ArtistList");
         }
 
-        public IActionResult ArtistDetails()
+       
+
+        // Edit Artist Functionality
+
+        [HttpPost]
+        public IActionResult GoToEditArtistView(int id)
         {
-            return View();
+            var entertainer = _repo.Entertainers.FirstOrDefault(e => e.EntertainerID == id);
+            return View("EditArtist", entertainer);
         }
+
+        [HttpPost]
+        public IActionResult EditArtist(Entertainers entertainer)
+        {
+            _repo.EditEntertainer(entertainer);
+            _repo.SaveChanges();
+            return RedirectToAction("ArtistDetails", new { entertainerId = entertainer.EntertainerID });
+        }
+
+        // Delete Artist Functionality
+        [HttpGet]
+        public IActionResult DeleteArtist(int EntertainerID)
+        {
+            var entertainer = _repo.Entertainers.FirstOrDefault(e => e.EntertainerID == EntertainerID);
+            return View("DeletConfirmation");
+        }
+
+
         
+        public IActionResult DeleteArtist(Entertainers entertainer)
+        {
+            _repo.DeleteEntertainer(entertainer);
+            _repo.SaveChanges();
+            return RedirectToAction("ArtistList");
+        }
     }
 }

@@ -1,29 +1,30 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<Entertainers>
 
-@model List<Entertainers>
-
-<div class="text-center">
+<div class="text-center mb-4">
     <h1 class="display-4">Artists</h1>
-    <p>Here is where the entertainers will be displayed</p>
-
+    
 </div>
 
-<div class="text-center">
-    <h1 class="display-4">Artists</h1>
-    <p>Here is where the entertainers will be displayed:</p>
-    <ul>
-        @foreach (var entertainer in Model)
-        {
-            <li>@entertainer.EntStageName</li>  <!-- Displaying the stage name of each entertainer -->
-        }
-    </ul>
+<div class="row">
+    @foreach (var entertainer in Model)
+    {
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-center">@entertainer.EntStageName</h5>
+                    <p class="card-text">
+                        <!-- Additional information or a brief description could go here -->
+                    </p>
+                    <div class="text-center">
+                        <a asp-action="ArtistDetails" asp-route-entertainerId="@entertainer.EntertainerID" class="btn btn-secondary">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>
 
-
-<div>
-    <a class="btn btn-primary" asp-action="AddArtist">Add Artist</a>
+<div class="text-center mt-4">
+    <a class="btn btn-primary" asp-action="AddArtist">Add New Artist</a>
 </div>
+

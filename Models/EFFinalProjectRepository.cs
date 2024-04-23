@@ -16,6 +16,16 @@
             _context.Entertainers.Add(entertainer);
         }
 
+        public void DeleteEntertainer(Entertainers entertainer)
+        {
+            _context.Entertainers.Remove(entertainer);
+        }
+
+        public void EditEntertainer(Entertainers entertainer)
+        {
+            _context.Entertainers.Update(entertainer);
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();
