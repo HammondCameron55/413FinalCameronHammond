@@ -81,6 +81,7 @@ namespace _413FinalCameronHammond.Controllers
         }
 
         // Delete Artist Functionality
+        //
         [HttpGet]
         public IActionResult DeleteArtist(int EntertainerID)
         {
