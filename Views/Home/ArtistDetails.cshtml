@@ -9,8 +9,13 @@
     <div>Web Page: @Model.EntWebPage</div>
     <div>Date Entered: @Model.DateEntered</div>
 
+    @{
+        int id = Model.EntertainerID;
+        //console.WriteLine(id);
+    }
+
     <form asp-action="GoToEditArtistView" method="post">
-        <input type="hidden" asp-for="EntertainerID" />
+        <input type="hidden" asp-for="@id" />
         <button type="submit" class="btn btn-primary">Edit</button>
     </form>
 
