@@ -1,27 +1,22 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Entertainers
 
-@model Entertainers
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="text-center">
+                <h2>Delete Confirmation</h2>
+                <p>Are you sure you want to delete @Model.EntStageName?</p>
+            </div>
 
-<div class="text-center">
-    <h1 class="display-4">Delete Confirmation</h1>
-    <p>Are you sure you want to delete this artist?</p>
-    <p>@Model.EntStageName</p>
+            <!-- Flexbox Container for Buttons -->
+            <div class="d-flex justify-content-center">
+                <form asp-action="DeleteArtist" method="post" class="mr-2">
+                    <input type="hidden" asp-for="EntertainerID" />
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+
+                <a class="btn btn-primary" asp-action="ArtistList">Cancel</a>
+            </div>
+        </div>
+    </div>
 </div>
-
-<form asp-action="DeleteArtist" method="post">
-    <input type="hidden" asp-for="EntStageName" />
-    <input type="hidden" asp-for="EntSSN" />
-    <input type="hidden" asp-for="EntStreetAddress" />
-    <input type="hidden" asp-for="EntCity" />
-    <input type="hidden" asp-for="EntState" />
-    <input type="hidden" asp-for="EntZipCode" />
-    <input type="hidden" asp-for="EntPhoneNumber" />
-    <input type="hidden" asp-for="EntWebPage" />
-    <input type="hidden" asp-for="EntEMailAddress" />
-    <input type="submit" value="Delete" class="btn btn-danger" />
-    <a class="btn btn-primary" asp-action="ArtistList">Cancel</a>
-</form>

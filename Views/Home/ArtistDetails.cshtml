@@ -18,18 +18,20 @@
         <input type="hidden" asp-for="@id" />
         <button type="submit" class="btn btn-primary">Edit</button>
     </form>
-
+    <!--
 <form asp-action="DeleteArtist" method="post">
         <input type="hidden" asp-for="EntertainerID" />
         <button type="submit" class="btn btn-danger">Delete</button>
 </form>
-<!--Why does the above delete button work?-->
+Why does the above delete button work?-->
+
+    <form asp-action="GOToDeleteArtistConfrimation" method="post">
+        <input type="hidden" asp-for="@id" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
 
 </div>
 
-<!--
-<form asp-action="DeleteArtist" method="get"> 
-<input type="hidden" asp-for="EntertainerID" />
-    <button type="submit" class="btn btn-danger">Delete</button>
-</form>
--->
+
+
+

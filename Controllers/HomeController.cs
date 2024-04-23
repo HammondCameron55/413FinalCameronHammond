@@ -82,11 +82,11 @@ namespace _413FinalCameronHammond.Controllers
 
         // Delete Artist Functionality
         //
-        [HttpGet]
-        public IActionResult DeleteArtist(int EntertainerID)
+        [HttpPost]
+        public IActionResult GOToDeleteArtistConfrimation(int id)
         {
-            var entertainer = _repo.Entertainers.FirstOrDefault(e => e.EntertainerID == EntertainerID);
-            return View("DeletConfirmation");
+            var entertainer = _repo.Entertainers.FirstOrDefault(e => e.EntertainerID == id);
+            return View("DeletConfirmation", entertainer);
         }
 
 
